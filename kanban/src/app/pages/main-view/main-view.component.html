@@ -1,0 +1,121 @@
+<div class="root">
+    <div class="navbar navbar-dark bg-dark">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <h1 class="app-name has-gradient-text">Kanban</h1>
+            </div>
+        </div>
+    </div>
+    <div class="board">
+        <div class="board-bar">
+          <p class="board-name" >Kanban Board</p>
+        </div>
+
+        <div class="board-wrapper">
+            <div class="board-columns" cdkDropListGroup>
+                <div class="board-column">
+                    <div class="column-title">
+                        Todo
+                        <button type="button" class="btn btn-deafult btn-sm addTask-button" (click)="createTask('todo')" >
+                            Add
+                        </button>
+                    </div>
+
+                    <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                    (cdkDropListDropped)="drop($event)">
+                        <div class="task" *ngIf="newTodoTask" >
+                            <input class="newTask" type="text" placeholder="Enter Task" 
+                            style="width: 236.219px; height: 24px;" name="todoTaskName" [(ngModel)]="todoTaskName" 
+                            #todoTaskname="ngModel" (keyup.enter)="addTask('todo')" />
+                        </div>
+                        <div *ngFor="let item of todo" > 
+                                <div class="task" *ngIf= "!item.id"  cdkDrag (click)="taskClicked(item)">
+                                    {{item.taskName}}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="board-column">
+                    <div class="column-title">
+                        Inprogress
+                        <button type="button" class="btn btn-deafult btn-sm addTask-button" (click)="createTask('inprogress')" >
+                            Add
+                        </button>
+                    </div>
+
+                    <div class="task-container"
+                    cdkDropList
+                        #todoList="cdkDropList"
+                        [cdkDropListData]="inprogress"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="task" *ngIf="newInprgTask" >
+                            <input class="newTask" type="text" placeholder="Enter Task" 
+                            style="width: 236.219px; height: 24px;" name="inprgTaskName" [(ngModel)]="inprgTaskName" 
+                            #inprgTaskname="ngModel" (keyup.enter)="addTask('inprogress')" />
+                        </div>
+                        <div *ngFor="let item of inprogress"> 
+                            <div class="task" *ngIf="!item.id" cdkDrag (click)="taskClicked(item)">
+                                {{item.taskName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="board-column">
+                    <div class="column-title">
+                        Done
+                        <button type="button" class="btn btn-deafult btn-sm addTask-button" (click)="createTask('done')" >
+                            Add
+                        </button>
+                    </div>
+
+                    <div class="task-container"
+                    cdkDropList
+                        #todoList="cdkDropList"
+                        [cdkDropListData]="done"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="task" *ngIf="newDoneTask" >
+                            <input class="newTask" type="text" placeholder="Enter Task" 
+                            style="width: 236.219px; height: 24px;" name="donTaskName" [(ngModel)]="doneTaskName" 
+                            #doneTaskname="ngModel" (keyup.enter)="addTask('done')" />
+                        </div>
+                        <div *ngFor="let item of done"> 
+                            <div class="task" *ngIf="!item.id" cdkDrag (click)="taskClicked(item)">
+                                {{item.taskName}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="board-column">
+                    
+                    <div class="column-title">
+                        Pending
+                        <button type="button" class="btn btn-deafult btn-sm addTask-button" (click)="createTask('pending')" >
+                            Add
+                        </button>
+                    </div>
+
+                    <div class="task-container"
+                    cdkDropList
+                        #todoList="cdkDropList"
+                        [cdkDropListData]="pending"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="task" *ngIf="newPendingTask" >
+                            <input class="newTask" type="text" placeholder="Enter Task" 
+                            style="width: 236.219px; height: 24px;" name="pendingTaskName" [(ngModel)]="pendingTaskName" 
+                            #pendingTaskname="ngModel" (keyup.enter)="addTask('pending')" />
+                        </div>
+                        <div *ngFor="let item of pending"> 
+                            <div class="task" *ngIf="!item.id" cdkDrag (click)="taskClicked(item)">
+                                {{item.taskName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
