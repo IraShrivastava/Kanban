@@ -1,5 +1,5 @@
 # Kanban
-Advanced version of to do list
+Advanced version of to do list, a Kanban board to have your daily tasks sorted, task can be easily moved to a desirable column of its state by simply dragging the task card
 
 ## Build
 
